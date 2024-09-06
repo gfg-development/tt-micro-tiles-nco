@@ -51,7 +51,7 @@ module tt_um_micro_gfg_development_nco (
     if (~rst_n) begin
       qe          <= 0;
     end else begin
-      qe          <= qe + {accu[15], accu[15 : 8]};
+      qe          <= {~qe[8], qe[7 : 0]} + {accu[15], accu[15 : 8]};
     end
   end
 
