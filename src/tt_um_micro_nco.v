@@ -55,7 +55,7 @@ module tt_um_micro_gfg_development_nco (
     end
   end
 
-  assign uo_out[0]    = qe[9];
-  assign uo_out[7:1]  = 0;
+  assign uo_out[7]    = qe[9];
+  assign uo_out[6:0]  = 0;
 
 endmodule  // tt_um_factory_test
