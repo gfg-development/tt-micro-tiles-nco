@@ -35,27 +35,27 @@ module tt_um_micro_gfg_development_nco (
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low to reset
 );
-  reg [19 : 0] accu;
+  reg [20 : 0] accu;
 
   always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
       accu        <= 0;
     end else begin
-      accu        <= accu + {12'h000, ui_in};
+      accu        <= accu + {13'h0000, ui_in};
     end
   end
 
-  reg [8 : 0] qe;
+  reg [9 : 0] qe;
 
   always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
       qe          <= 0;
     end else begin
-      qe          <= {~qe[8], qe[7 : 0]} + {accu[19], accu[19 : 12]};
+      qe          <= {~qe[9], qe[8 : 0]} + {accu[20], accu[20 : 12]};
     end
   end
 
-  assign uo_out[0]    = qe[8];
+  assign uo_out[0]    = qe[9];
   assign uo_out[7:1]  = 0;
 
 endmodule  // tt_um_factory_test
